@@ -58,7 +58,7 @@ class ErrorHandler
     {
         file_put_contents(
             LOGS . '/errors.log',
-        "[". date('Y-m-d H:i:s'). "] Exception message: {$message} | File: {$file} | Line: {$file}" . PHP_EOL,
+        "[". date('Y-m-d H:i:s'). "] Exception message: {$message} | File: {$file} | Line: {$line}" . PHP_EOL,
         FILE_APPEND
         );
     }
