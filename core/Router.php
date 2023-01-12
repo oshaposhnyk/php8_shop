@@ -22,8 +22,22 @@ class Router
         return self::$route;
     }
 
+    protected static function removeQueryString(string $url): string
+    {
+        if ($url) {
+            $params = explode('?', $url, 2);
+            if (false === str_contains($params[0], '=')) {
+                return rtrim($params[0], '/');
+            }
+            debug($params);
+        }
+
+        return '';
+    }
+
     public static function dispatch(string $url): void
     {
+        $url = self::removeQueryString($url);
         if (self::matchRoute($url)) {
 
             $controller = 'app\controllers\\' . self::$route['admin_prefix'] . self::$route['controller'] . 'Controller';
