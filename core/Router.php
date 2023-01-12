@@ -25,12 +25,23 @@ class Router
     public static function dispatch(string $url): void
     {
         if (self::matchRoute($url)) {
-            var_dump('ok');
+
+            $controller = 'app\controllers\\' . self::$route['admin_prefix'] . self::$route['controller'] . 'Controller';
+            $action = self::$route['action'] . 'Action';
+
+            if (class_exists($controller)) {
+                $controllerObj = new $controller(self::$route);
+                if (method_exists($controllerObj, $action)) {
+                    $controllerObj->$action();
+                } else {
+                    throw new \Exception("Action {$controller}::{$action} not found", 404);
+                }
+            } else {
+                throw new \Exception("Controller {$controller} not found", 404);
+            }
         } else {
-            var_dump('no');
+            throw new \Exception('Page not found', 404);
         }
-        exit;
-        var_dump($url);
     }
 
     public static function matchRoute(string $url): bool
@@ -48,12 +59,11 @@ class Router
                 if (!isset($route['admin_prefix'])) {
                     $route['admin_prefix'] = '';
                 } else {
-                    $route['admin_prefix'] = '\\';
+                    $route['admin_prefix'] .= '\\';
                 }
                 $route['controller'] = self::upperCamelCase($route['controller']);
                 $route['action'] = self::lowerCamelCase($route['action']);
-                debug($route);
-
+                self::$route = $route;
                 return true;
             }
         }
