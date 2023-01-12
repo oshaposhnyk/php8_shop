@@ -12,4 +12,4 @@ new \core\App();
 
 debug(\core\Router::getRoutes());
 
-throw new Exception('Exception');
+//throw new Exception('Exception');
