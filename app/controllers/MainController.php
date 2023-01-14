@@ -8,7 +8,5 @@ class MainController extends Controller
 {
     public function indexAction()
     {
-        var_dump($this->route);
-        echo 'ok';
     }
 }

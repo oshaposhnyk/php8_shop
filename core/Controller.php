@@ -16,7 +16,7 @@ abstract class Controller
 
     public function getModel(): void
     {
-        $model = 'app\models\\' . $this->data['admin_prefix'] . $this->route['controller'];
+        $model = 'app\models\\' . $this->route['admin_prefix'] . $this->route['controller'];
         if (class_exists($model)) {
             $this->model = new $model();
         }
@@ -25,6 +25,7 @@ abstract class Controller
     public function getView(): void
     {
         $this->view = $this->view ?: $this->route['action'];
+        (new View($this->route, $this->layout, $this->view, $this->meta))->render($this->data);
     }
 
     public function set(array $data): void

@@ -29,7 +29,6 @@ class Router
             if (false === str_contains($params[0], '=')) {
                 return rtrim($params[0], '/');
             }
-            debug($params);
         }
 
         return '';
@@ -51,6 +50,7 @@ class Router
                 if (method_exists($controllerObj, $action)) {
                     $controllerObj->$action();
                     $controllerObj->getModel();
+                    $controllerObj->getView();
                 } else {
                     throw new \Exception("Action {$controller}::{$action} not found", 404);
                 }
