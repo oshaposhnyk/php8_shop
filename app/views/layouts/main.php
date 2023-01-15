@@ -13,5 +13,6 @@
 </head>
 <body>
     <?php echo $this->content ?>
+    <?= $this->getDbLogs() ?>
 </body>
 </html>

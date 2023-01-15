@@ -2,6 +2,8 @@
 
 namespace core;
 
+use RedBeanPHP\R;
+
 class View
 {
     public string $content = '';
@@ -50,6 +52,23 @@ class View
         $out .= '<meta name="keywords" content="'. h($this->meta['keywords']) .'" >' . PHP_EOL;
 
         return $out;
+    }
+
+    public function getDbLogs(): void
+    {
+        if (DEBUG) {
+            $logs = R::getLogger();
+            $logs = array_merge(
+                $logs->grep('SELECT'),
+                $logs->grep('select'),
+                $logs->grep('INSERT'),
+                $logs->grep('insert'),
+                $logs->grep('DELETE'),
+                $logs->grep('delete'),
+            );
+
+            debug($logs);
+        }
     }
 
 }
