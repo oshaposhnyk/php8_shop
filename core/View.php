@@ -32,7 +32,7 @@ class View
             require_once $view_file;
             $this->content = ob_get_clean();
         } else {
-            throw new \Exception("Not found view file {$view_file}", 500);
+            throw new \Exception("Не найден вид {$view_file}", 500);
         }
 
         if (false !== $this->layout) {
@@ -40,7 +40,7 @@ class View
             if (is_file($layout_file)) {
                 require_once $layout_file;
             } else {
-                throw new \Exception("Not found layout file {$layout_file}", 500);
+                throw new \Exception("Не найден шаблон {$layout_file}", 500);
             }
         }
     }

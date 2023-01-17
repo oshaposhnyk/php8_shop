@@ -2,10 +2,9 @@
 
 namespace app\models;
 
-use core\Model;
 use RedBeanPHP\R;
 
-class Main extends Model
+class Main extends AppModel
 {
     public function getNames(): array
     {
