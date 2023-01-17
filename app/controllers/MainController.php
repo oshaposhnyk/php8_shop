@@ -11,8 +11,8 @@ class MainController extends AppController
     public function indexAction()
     {
         $slides = R::findAll('slider');
+        $products = $this->model->getHits(1, 3);
         $this->setMeta('Title', 'Desc', 'keywords');
-//        debug($slides);
-        $this->set(['slides' => $slides]);
+        $this->set(['slides' => $slides, 'products' => $products]);
     }
 }

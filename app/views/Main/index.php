@@ -1,6 +1,7 @@
 <?php
     /** @var $test string */
     /** @var $slides array */
+    /** @var $products array */
 ?>
 <?php if(!empty($slides)): ?>
 <div class="container-fluid my-carousel">
@@ -18,7 +19,7 @@
         <div class="carousel-inner">
             <?php $i = 1; foreach ($slides as $slide): ?>
                 <div class="carousel-item <?php if ($i==1) echo 'active'?>">
-                    <img src="<?= PATH . $slide->image ?>" class="d-block w-100" alt="...">
+                    <img src="<?= PATH . $slide->img ?>" class="d-block w-100" alt="...">
                 </div>
             <?php $i++; endforeach; ?>
         </div>
@@ -36,130 +37,19 @@
 </div>
 <?php endif; ?>
 
+<?php if(!empty($products)): ?>
 <section class="featured-products">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <h3 class="section-title">Рекомендуемые товары</h3>
             </div>
-
-            <div class="col-lg-4 col-sm-6 mb-3">
-                <div class="product-card">
-                    <div class="product-tumb">
-                        <a href="product.html"><img src="<?= PATH ?>/assets/img/products/iphone_1.jpg" alt=""></a>
-                    </div>
-                    <div class="product-details">
-                        <h4><a href="<?= PATH ?>/assets/product.html">iPhone iPhone iPhone iPhone iPhone</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum! 2Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                        <div class="product-bottom-details d-flex justify-content-between">
-                            <div class="product-price"><small>$96.00</small>$230.99</div>
-                            <div class="product-links">
-                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6 mb-3">
-                <div class="product-card">
-                    <div class="product-tumb">
-                        <a href="product.html"><img src="<?= PATH ?>/assets/img/products/canon_eos_5d_1.jpg" alt=""></a>
-                    </div>
-                    <div class="product-details">
-                        <h4><a href="product.html">Canon EOS 5D</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                        <div class="product-bottom-details d-flex justify-content-between">
-                            <div class="product-price"><small>$96.00</small>$230.99</div>
-                            <div class="product-links">
-                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6 mb-3">
-                <div class="product-card">
-                    <div class="product-tumb">
-                        <a href="<?= PATH ?>/assets/product.html"><img src="<?= PATH ?>/assets/img/products/hp_1.jpg" alt=""></a>
-                    </div>
-                    <div class="product-details">
-                        <h4><a href="product.html">HP</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                        <div class="product-bottom-details d-flex justify-content-between">
-                            <div class="product-price"><small>$96.00</small>$230.99</div>
-                            <div class="product-links">
-                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6 mb-3">
-                <div class="product-card">
-                    <div class="product-tumb">
-                        <a href="product.html"><img src="<?= PATH ?>/assets/img/products/apple_cinema_30.jpg" alt=""></a>
-                    </div>
-                    <div class="product-details">
-                        <h4><a href="product.html">Apple cinema 30"</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                        <div class="product-bottom-details d-flex justify-content-between">
-                            <div class="product-price"><small>$96.00</small>$230.99</div>
-                            <div class="product-links">
-                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6 mb-3">
-                <div class="product-card">
-                    <div class="product-tumb">
-                        <a href="product.html"><img src="<?= PATH ?>/assets/img/products/imac_1.jpg" alt=""></a>
-                    </div>
-                    <div class="product-details">
-                        <h4><a href="product.html">iMac</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                        <div class="product-bottom-details d-flex justify-content-between">
-                            <div class="product-price"><small>$96.00</small>$230.99</div>
-                            <div class="product-links">
-                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-sm-6 mb-3">
-                <div class="product-card">
-                    <div class="product-tumb">
-                        <a href="product.html"><img src="<?= PATH ?>/assets/img/products/imac_1.jpg" alt=""></a>
-                    </div>
-                    <div class="product-details">
-                        <h4><a href="product.html">iMac</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-                        <div class="product-bottom-details d-flex justify-content-between">
-                            <div class="product-price"><small>$96.00</small>$230.99</div>
-                            <div class="product-links">
-                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <?php $this->getPart('parts/products_loop', ['products' => $products]); ?>
 
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <section class="services">
     <div class="container">
