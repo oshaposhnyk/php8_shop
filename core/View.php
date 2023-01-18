@@ -32,7 +32,7 @@ class View
             require_once $view_file;
             $this->content = ob_get_clean();
         } else {
-            throw new \Exception("Не найден вид {$view_file}", 500);
+            throw new \Exception("Not found view {$view_file}", 500);
         }
 
         if (false !== $this->layout) {
@@ -40,16 +40,16 @@ class View
             if (is_file($layout_file)) {
                 require_once $layout_file;
             } else {
-                throw new \Exception("Не найден шаблон {$layout_file}", 500);
+                throw new \Exception("Not found template {$layout_file}", 500);
             }
         }
     }
 
     public function getMeta(): string
     {
-        $out = '<title>' . h($this->meta['title']) . '</title>' . PHP_EOL;
-        $out .= '<meta name="description" content="'. h($this->meta['description']) .'" >' . PHP_EOL;
-        $out .= '<meta name="keywords" content="'. h($this->meta['keywords']) .'" >' . PHP_EOL;
+        $out = '<title>' . h($this->meta['title'] ?? '') . '</title>' . PHP_EOL;
+        $out .= '<meta name="description" content="'. h($this->meta['description'] ?? '') .'" >' . PHP_EOL;
+        $out .= '<meta name="keywords" content="'. h($this->meta['keywords'] ?? '') .'" >' . PHP_EOL;
 
         return $out;
     }
@@ -57,17 +57,20 @@ class View
     public function getDbLogs(): void
     {
         if (DEBUG) {
-            $logs = R::getLogger();
-            $logs = array_merge(
-                $logs->grep('SELECT'),
-                $logs->grep('select'),
-                $logs->grep('INSERT'),
-                $logs->grep('insert'),
-                $logs->grep('DELETE'),
-                $logs->grep('delete'),
-            );
+            if (R::testConnection()) {
+                $logs = R::getLogger();
+                $logs = array_merge(
+                    $logs->grep('SELECT'),
+                    $logs->grep('select'),
+                    $logs->grep('INSERT'),
+                    $logs->grep('insert'),
+                    $logs->grep('DELETE'),
+                    $logs->grep('delete'),
+                );
 
-            debug($logs);
+                debug($logs);
+            }
+
         }
     }
 

@@ -45,7 +45,6 @@
                 <h3 class="section-title">Рекомендуемые товары</h3>
             </div>
                 <?php $this->getPart('parts/products_loop', ['products' => $products]); ?>
-
         </div>
     </div>
 </section>
