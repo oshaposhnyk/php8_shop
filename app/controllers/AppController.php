@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\AppModel;
+use app\widgets\Language;
+use core\App;
 use core\Controller;
 
 class AppController extends Controller
@@ -12,5 +14,8 @@ class AppController extends Controller
     {
         parent::__construct($route);
         new AppModel();
+
+        App::$app->setProperty("language", Language::getLanguages());
+        debug(App::$app->getProperty("language", 1));
     }
 }
