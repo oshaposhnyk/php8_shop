@@ -8,7 +8,7 @@ class LanguageController extends AppController
 {
     public function changeAction()
     {
-        $lang = $_GET['lang'] ?? null;
+        $lang = get('lang', 's');
 
         if($lang) {
             $langs = App::$app->getProperty('languages');
