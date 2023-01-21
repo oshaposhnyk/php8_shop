@@ -7,7 +7,7 @@ use core\View;
 <html lang="en">
 <head>
     <!-- Required meta tags -->
-    <base href="/">
+    <base href="<?= baseUrl() ?>">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?= PATH ?>/assets/bootstrap/css/bootstrap.min.css">
@@ -67,7 +67,7 @@ use core\View;
 
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid p-0">
-                    <a class="navbar-brand" href="/"><?= \core\App::$app->getProperty('site_name') ?></a>
+                    <a class="navbar-brand" href="<?= baseUrl() ?>"><?= \core\App::$app->getProperty('site_name') ?></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

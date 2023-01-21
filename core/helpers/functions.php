@@ -24,3 +24,8 @@ function redirect($http = false) {
     header("Location: ".  $redirect);
     die();
 }
+
+function baseUrl()
+{
+    return PATH . '/' . (\core\App::$app->getProperty('lang') . '/' ?? '');
+}
