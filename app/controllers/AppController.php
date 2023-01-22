@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\models\AppModel;
-use app\widgets\Language;
+use app\widgets\language\Language;
 use core\App;
 use core\Controller;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\widgets;
+namespace app\widgets\language;
 
 use core\App;
 use RedBeanPHP\R;
