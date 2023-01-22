@@ -17,6 +17,9 @@ class AppController extends Controller
 
         App::$app->setProperty("languages", Language::getLanguages());
         App::$app->setProperty('language', Language::getLanguage(Language::getLanguages()));
-//        debug(App::$app->getProperty("language", 1));
+
+        $lang = App::$app->getProperty('language');
+        \core\Language::load($lang['code'], $this->route);
+
     }
 }

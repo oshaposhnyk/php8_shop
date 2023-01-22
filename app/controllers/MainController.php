@@ -13,7 +13,7 @@ class MainController extends AppController
     {
         $slides = R::findAll('slider');
         $products = $this->model->getHits(App::$app->getProperty('language')['id'], 3);
-        $this->setMeta(App::$app->getProperty('site_name') . ' - Home', 'Desc', 'keywords');
+        $this->setMeta(lang('main_index_meta_title'), lang('main_index_meta_description'), 'keywords');
         $this->set(['slides' => $slides, 'products' => $products]);
     }
 }

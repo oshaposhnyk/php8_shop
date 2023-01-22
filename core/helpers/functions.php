@@ -68,3 +68,13 @@ function post($key, $type = 's'): string|int|float
         return trim($param);
     }
 }
+
+function l(string $key): void
+{
+    echo \core\Language::get($key);
+}
+
+function lang(string $key): string
+{
+    return \core\Language::get($key);
+}
