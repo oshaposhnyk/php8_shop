@@ -8,7 +8,7 @@ use core\App;
 /** @property Cart $model */
 class CartController extends AppController
 {
-    public function addAction()
+    public function addAction(): bool
     {
         $lang = App::$app->getProperty('language');
         $id = get('id');
@@ -17,8 +17,20 @@ class CartController extends AppController
         if(!$id) {
             return false;
         }
+        $product = $this->model->getProducts($id, $lang);
+        if(!$product) {
+            return false;
+        }
 
-        var_dump($this->model->getProducts($id, $lang));
-        die();
+        $this->model->addToCart($product, $qty);
+
+        if ($this->isAjax()) {
+            debug($_SESSION['cart']);
+            die();
+        }
+
+        redirect();
+        return true;
+
     }
 }
