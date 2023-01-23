@@ -1,5 +1,33 @@
 $(function() {
 
+	//CART
+
+	$('.add-to-cart').on('click', function (e) {
+		e.preventDefault();
+
+		const id = $(this).data('id');
+		const qty = $('#input-quantity').val() ? $('#input-quantity').val() : 1;
+		const $this = this;
+
+		$.ajax({
+			url: 'cart/add',
+			type: 'GET',
+			data: {
+				id,
+				qty
+			},
+			success: function (res) {
+				console.log(res);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+
+		});
+	});
+
+	//CART
+
 	$('.open-search').click(function(e) {
 		e.preventDefault();
 		$('#search').addClass('active');
