@@ -1,6 +1,11 @@
 $(function() {
 
 	//CART
+	function showCart(cart) {
+		$('#cart-modal .modal-cart-content').html(cart);
+		let myModal = new bootstrap.Modal(document.getElementById('cart-modal'));
+		myModal.show();
+	}
 
 	$('.add-to-cart').on('click', function (e) {
 		e.preventDefault();
@@ -17,7 +22,7 @@ $(function() {
 				qty
 			},
 			success: function (res) {
-				console.log(res);
+				showCart(res);
 			},
 			error: function (err) {
 				console.log(err);
