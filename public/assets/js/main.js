@@ -7,6 +7,23 @@ $(function() {
 		myModal.show();
 	}
 
+	$('#get-cart').on('click', function (e) {
+		e.preventDefault();
+
+		$.ajax({
+			url: 'cart/show',
+			type: 'GET',
+			success: function (res) {
+				showCart(res);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+
+		});
+
+	});
+
 	$('.add-to-cart').on('click', function (e) {
 		e.preventDefault();
 

@@ -21,7 +21,7 @@ class Cart extends AppModel
     {
         $qty = abs($qty);
 
-        if ($product['is_download'] && isset($_SESSION['cart'][$product['id'] ])) {
+        if ($product['is_download'] && isset($_SESSION['cart'][$product['id']])) {
             return false;
         }
 
@@ -31,20 +31,18 @@ class Cart extends AppModel
             if ($product['is_download']) {
                 $qty = 1;
             }
-
             $_SESSION['cart'][$product['id']] = [
                 'title' => $product['title'],
                 'slug' => $product['slug'],
                 'price' => $product['price'],
                 'qty' => $qty,
                 'img' => $product['img'],
-                'is_download' => $product['is_download']
+                'is_download' => $product['is_download'],
             ];
         }
 
-        $_SESSION['cart.qty'] = !empty($_SESSION['cart.qty']) ? !empty($_SESSION['cart.qty']) + $qty : $qty;
-        $_SESSION['cart.sum'] = !empty($_SESSION['cart.sum']) ? !empty($_SESSION['cart.sum']) + $qty * $product['price'] : $qty * $product['price'];
-
+        $_SESSION['cart.qty'] = !empty($_SESSION['cart.qty']) ? $_SESSION['cart.qty'] + $qty : $qty;
+        $_SESSION['cart.sum'] = !empty($_SESSION['cart.sum']) ? $_SESSION['cart.sum'] + $qty * $product['price'] : $qty * $product['price'];
         return true;
     }
 }

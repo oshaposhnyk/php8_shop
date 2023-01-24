@@ -124,6 +124,10 @@ li a.dropdown-item:focus, li a.dropdown-item:hover {
 	box-shadow: 0 0 0 .1rem rgba(238, 110, 115,.25);
 }
 
+.cart-table img {
+	max-height: 50px;
+}
+
 /* Header top */
 .header-top {
 	background-color: #ee6e73;

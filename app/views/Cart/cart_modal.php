@@ -8,6 +8,7 @@
                 <th scope="col">Товар</th>
                 <th scope="col">Кол-во</th>
                 <th scope="col">Цена</th>
+                <th scope="col"><i class="far fa-trash-alt"></i></th>
             </tr>
             </thead>
             <tbody>
@@ -20,9 +21,19 @@
                 <td><a href="product/<?= $item['slug'] ?>"><?= $item['title'] ?></a></td>
                 <td><?= $item['qty'] ?></td>
                 <td><?= $item['price'] ?></td>
+                <td><a class="del-item" href="cart/delete?id=<?= $id ?>"><i class="far fa-trash-alt"></i></a></td>
             </tr>
             <?php endforeach; ?>
 
+            <tr>
+                <td colspan="4" class="text-end">Итого </td>
+                <td class="cart_qty"><?= $_SESSION['cart.qty'] ?> </td>
+            </tr>
+
+            <tr>
+                <td colspan="4" class="text-end">Сумма </td>
+                <td class="cart_sum"><?= $_SESSION['cart.sum'] ?> </td>
+            </tr>
             </tbody>
         </table>
     </div>
