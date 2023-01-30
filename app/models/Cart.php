@@ -61,4 +61,23 @@ class Cart extends AppModel
         unset($_SESSION['cart.qty']);
         unset($_SESSION['cart.sum']);
     }
+
+    public static function translateCart($lang)
+    {
+        if (empty($_SESSION['cart'])) {
+            return;
+        }
+
+        $ids = implode(',', array_keys($_SESSION['cart']));
+        $products = R::getAll(
+            "SELECT p.id, pd.title FROM product p
+            JOIN product_description pd 
+            ON p.id = pd.product_id 
+            WHERE p.id IN ($ids) AND pd.language_id = ?", [$lang['id']]
+        );
+
+        foreach ($products as $product) {
+            $_SESSION['cart'][$product['id']]['title'] = $product['title'];
+        }
+    }
 }
