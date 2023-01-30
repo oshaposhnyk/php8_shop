@@ -69,7 +69,7 @@ $(function() {
 
 		const id = $(this).data('id');
 		const qty = $('#input-quantity').val() ? $('#input-quantity').val() : 1;
-		const $this = this;
+		const $this = $(this);
 
 		$.ajax({
 			url: 'cart/add',
@@ -80,6 +80,7 @@ $(function() {
 			},
 			success: function (res) {
 				showCart(res);
+				$this.find('i').removeClass('fa-shopping-cart').addClass('fa-luggage-cart');
 			},
 			error: function (err) {
 				console.log(err);
