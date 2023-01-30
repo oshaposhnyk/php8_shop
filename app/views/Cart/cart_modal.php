@@ -21,18 +21,18 @@
                 <td><a href="product/<?= $item['slug'] ?>"><?= $item['title'] ?></a></td>
                 <td><?= $item['qty'] ?></td>
                 <td><?= $item['price'] ?></td>
-                <td><a class="del-item" href="cart/delete?id=<?= $id ?>"><i class="far fa-trash-alt"></i></a></td>
+                <td><a class="del-item" href="cart/delete?id=<?= $id ?>" data-id="<?= $id ?>"><i class="far fa-trash-alt"></i></a></td>
             </tr>
             <?php endforeach; ?>
 
             <tr>
                 <td colspan="4" class="text-end">Итого </td>
-                <td class="cart_qty"><?= $_SESSION['cart.qty'] ?> </td>
+                <td class="cart_qty"><?= $_SESSION['cart.qty'] ?></td>
             </tr>
 
             <tr>
                 <td colspan="4" class="text-end">Сумма </td>
-                <td class="cart_sum"><?= $_SESSION['cart.sum'] ?> </td>
+                <td class="cart_sum"><?= $_SESSION['cart.sum'] ?></td>
             </tr>
             </tbody>
         </table>
@@ -45,6 +45,6 @@
     <button type="button" class="btn btn-success ripple" data-bs-dismiss="modal">Продолжить покупки</button>
     <?php if (!empty($_SESSION['cart'])): ?>
         <button type="button" class="btn btn-primary">Оформить заказ</button>
-        <button type="button" class="btn btn-danger">Очистить корзину</button>
+        <button id="clear-cart" type="button" class="btn btn-danger">Очистить корзину</button>
     <?php endif; ?>
 </div>

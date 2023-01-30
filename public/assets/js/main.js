@@ -5,6 +5,12 @@ $(function() {
 		$('#cart-modal .modal-cart-content').html(cart);
 		let myModal = new bootstrap.Modal(document.getElementById('cart-modal'));
 		myModal.show();
+
+		if($('.cart_qty').text()) {
+			$('.count-items').text($('.cart_qty').text());
+		} else {
+			$('.count-items').text(0);
+		}
 	}
 
 	$('#get-cart').on('click', function (e) {
@@ -22,6 +28,40 @@ $(function() {
 
 		});
 
+	});
+
+	$('#cart-modal .modal-cart-content').on('click', '.del-item', function (e) {
+		e.preventDefault();
+		const id = $(this).data('id');
+
+		$.ajax({
+			url: 'cart/delete',
+			type: 'GET',
+			data: {
+				id
+			},
+			success: function (res) {
+				showCart(res);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+
+		});
+	});
+
+	$('#cart-modal .modal-cart-content').on('click', '#clear-cart', function (e) {
+		$.ajax({
+			url: 'cart/clear',
+			type: 'GET',
+			success: function (res) {
+				showCart(res);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+
+		});
 	});
 
 	$('.add-to-cart').on('click', function (e) {

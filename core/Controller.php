@@ -2,6 +2,8 @@
 
 namespace core;
 
+use JetBrains\PhpStorm\NoReturn;
+
 abstract class Controller
 {
     public array $data = [];
@@ -45,7 +47,7 @@ abstract class Controller
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
     }
 
-    public function loadView(string $view, array $vars = [])
+    #[NoReturn] public function loadView(string $view, array $vars = [])
     {
         extract($vars);
         $prefix = str_replace('\\', '/', $this->route['admin_prefix']);

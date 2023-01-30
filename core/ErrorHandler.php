@@ -30,7 +30,7 @@ class ErrorHandler
         );
     }
 
-    public function errorHandler($errorno, $errstr, $errfile, $errline)
+    public function errorHandler($errorno, $errstr, $errfile, $errline): void
     {
         $this->logError($errstr, $errfile, $errline);
         $this->displayError(

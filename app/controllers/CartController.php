@@ -37,4 +37,32 @@ class CartController extends AppController
     {
         $this->loadView('cart_modal');
     }
+
+    public function deleteAction()
+    {
+        $id = get('id');
+
+        if (isset($_SESSION['cart'][$id])) {
+            $this->model->deleteItem($id);
+        }
+
+        if ($this->isAjax()) {
+            $this->loadView('cart_modal');
+        }
+
+        redirect();
+    }
+
+    public function clearAction()
+    {
+        if (empty($_SESSION['cart'])) {
+            return false;
+        }
+
+        $this->model->clearCart();
+        $this->loadView('cart_modal');
+
+
+        return true;
+    }
 }
