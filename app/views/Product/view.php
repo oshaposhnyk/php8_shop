@@ -2,6 +2,7 @@
     /** @var $this View */
     /** @var $product array */
     /** @var $gallery array */
+    /** @var $breadcrumbs string */
 
 use core\View;
 
@@ -11,9 +12,7 @@ use core\View;
 <div class="container">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb bg-light p-2">
-				<li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i></a></li>
-				<li class="breadcrumb-item"><a href="#">Ноутбуки</a></li>
-				<li class="breadcrumb-item active" aria-current="page">MacBook</li>
+                <?= $breadcrumbs ?>
 			</ol>
 		</nav>
 </div>

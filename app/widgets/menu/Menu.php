@@ -45,14 +45,7 @@ class Menu
         $this->menuHtml = $cache->get("{$this->cacheKey}_{$this->lang['code']}");
 
         if (!$this->menuHtml) {
-            $this->data = R::getAssoc("
-                SELECT c.*, cd.*
-                FROM category c
-                JOIN category_description cd
-                ON c.id = cd.category_id
-                WHERE cd.language_id = ?
-                ", [$this->lang['id']]
-            );
+            $this->data = App::$app->getProperty("categories_{$this->lang['code']}");
 
             $this->tree = $this->getTree();
             $this->menuHtml = $this->getMenuHtml($this->tree);

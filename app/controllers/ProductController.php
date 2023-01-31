@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Breadcrumbs;
 use app\models\Product;
 use core\App;
 
@@ -20,8 +21,10 @@ class ProductController extends AppController
 
         $gallery = $this->model->getGallery($product['id']);
 
+        $breadcrumbs = Breadcrumbs::getBreadCrumbs($product['category_id'], $product['title']);
+
         $this->setMeta($product['title'], (string) $product['description'], $product['keywords']);
 
-        $this->set(['product' => $product, 'gallery' => $gallery]);
+        $this->set(['product' => $product, 'gallery' => $gallery, 'breadcrumbs' => $breadcrumbs]);
     }
 }
