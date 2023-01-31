@@ -16,7 +16,9 @@ class ProductController extends AppController
         $product = $this->model->getProduct($lang, $this->route['slug']);
 
         if (!$product) {
-            throw new \Exception('Product not found', 404);
+//            throw new \Exception('Product not found', 404);
+            $this->eror404();
+            return;
         }
 
         $gallery = $this->model->getGallery($product['id']);

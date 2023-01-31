@@ -53,8 +53,13 @@ use core\View;
                             <i class="far fa-user"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Авторизация</a></li>
-                            <li><a class="dropdown-item" href="#">Регистрация</a></li>
+                            <?php if (empty($_SESSION['user'])): ?>
+                                <li><a class="dropdown-item" href="#">Авторизация</a></li>
+                                <li><a class="dropdown-item" href="#">Регистрация</a></li>
+                            <?php else: ?>
+                                <li><a class="dropdown-item" href="#">Кабинет</a></li>
+                                <li><a class="dropdown-item" href="#">Выход</a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                     <?php new \app\widgets\language\Language() ?>

@@ -54,4 +54,12 @@ abstract class Controller
         require APP . "/views/{$prefix}{$this->route['controller']}/{$view}.php";
         die();
     }
+
+    public function eror404(string $folder = 'Error', string $view = '404', int $response = 404)
+    {
+        http_response_code($response);
+        $this->setMeta('Page not found');
+        $this->route['controller'] = $folder;
+        $this->view = $view;
+    }
 }
