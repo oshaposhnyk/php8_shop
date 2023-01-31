@@ -11,7 +11,7 @@
                         <a href="product/<?= $product['slug'] ?>"><img src="<?= PATH .  $product['img'] ?>" alt=""></a>
                     </div>
                     <div class="product-details">
-                        <h4><a href="<?= PATH ?>/assets/product.html"><?= $product['title'] ?></a></h4>
+                        <h4><a href="product/<?= $product['slug'] ?>"><?= $product['title'] ?></a></h4>
                         <p><?= $product['exerpt'] ?></p>
                         <div class="product-bottom-details d-flex justify-content-between">
                             <div class="product-price">
