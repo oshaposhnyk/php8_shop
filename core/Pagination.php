@@ -4,18 +4,18 @@ namespace core;
 
 class Pagination
 {
-    public $currentPage;
-    public $perPage;
-    public $total;
+    public int $currentPage;
+    public int $perPage;
+    public int $total;
     public int $countPages;
     public string $uri;
 
     /**
-     * @param $page
-     * @param $perPage
-     * @param $total
+     * @param int $page
+     * @param int $perPage
+     * @param int $total
      */
-    public function __construct($page, $perPage, $total)
+    public function __construct(int $page, int $perPage, int $total)
     {
         $this->perPage = $perPage;
         $this->total = $total;
@@ -102,7 +102,7 @@ class Pagination
 
     public function getCountPages()
     {
-        return ceil($this->total / $this->perpage) ?: 1;
+        return ceil($this->total / $this->perPage) ?: 1;
     }
 
     public function getCurrentPage($page)
@@ -114,7 +114,7 @@ class Pagination
 
     public function getStart()
     {
-        return ($this->currentPage - 1) * $this->perpage;
+        return ($this->currentPage - 1) * $this->perPage;
     }
 
     public function getParams()

@@ -3,7 +3,10 @@
     /** @var $breadcrumbs string */
     /** @var $category array */
     /** @var $this View */
+    /** @var $pagination Pagination */
+    /** @var $total int */
 
+use core\Pagination;
 use core\View;
 
 ?>
@@ -63,15 +66,9 @@ use core\View;
 
             <div class="row">
                 <div class="col-md-12">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
+                    <?php if (!empty($products) && $pagination->countPages > 1): ?>
+                        <?= $pagination ?>
+                    <?php endif; ?>
                 </div>
 
             </div>

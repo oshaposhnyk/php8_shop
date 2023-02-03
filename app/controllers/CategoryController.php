@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Breadcrumbs;
 use app\models\Category;
 use core\App;
+use core\Pagination;
 use RedBeanPHP\R;
 
 /** @property Category $model */
@@ -23,10 +24,24 @@ class CategoryController extends AppController
         $breadcrumbs = Breadcrumbs::getBreadCrumbs($category['id']);
         $ids = $this->model->getIds($category['id']);
         $ids = !$ids ? $category['id'] : $ids . $category['id'];
-        $products = $this->model->getProducts($ids, $lang);
+
+        $page = abs(get('page')) ?: 1;
+        $perPage = App::$app->getProperty('pagination');
+        $total = $this->model->getCountProducts($ids);
+
+        $pagination = new Pagination($page, $perPage, $total);
+        $start = $pagination->getStart();
+        $products = $this->model->getProducts($ids, $lang, $start, $perPage);
+
 
         $this->setMeta($category['title'], $category['description'] ?? '', $category['keywords']);
-        $this->set(['products' => $products, 'breadcrumbs' => $breadcrumbs, 'category' => $category]);
+        $this->set([
+            'products' => $products,
+            'breadcrumbs' => $breadcrumbs,
+            'category' => $category,
+            'pagination' => $pagination,
+            'total' => $total
+        ]);
     }
 
 

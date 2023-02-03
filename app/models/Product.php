@@ -12,7 +12,7 @@ class Product extends AppModel
             "SELECT p.*, pd.* FROM product p
                 JOIN product_description pd 
                 ON p.id = pd.product_id 
-                WHERE p.status = 1 AND p.slug = ? AND pd.language_id = ?", [
+                WHERE p.status = 1 AND p.slug = ? AND pd.language_id = ? ", [
                     $slug, $lang['id']
             ]
         );
