@@ -28,34 +28,37 @@ use core\View;
                 <div class=".category-desc">
                     <?= $category['content'] ?>
                 </div>
+                <hr>
             <?php endif; ?>
 
             <div class="row">
-                <div class="col-sm-6">
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="input-sort">Сортировка:</label>
-                        <select class="form-select" id="input-sort">
-                            <option selected="">По умолчанию</option>
-                            <option value="1">Название (А - Я)</option>
-                            <option value="2">Название (Я - А)</option>
-                            <option value="3">Цена (низкая &gt; высокая)</option>
-                            <option value="3">Цена (высокая &gt; низкая)</option>
-                        </select>
+                <?php if (!empty($products) && count($products) > 1): ?>
+                    <div class="col-sm-6">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="input-sort">Сортировка:</label>
+                            <select class="form-select" id="input-sort">
+                                <option >По умолчанию</option>
+                                <option value="sort=title_asc" <?php if(isset($_GET['sort']) && $_GET['sort'] == 'title_asc') echo 'selected';?>>Название (А - Я)</option>
+                                <option value="sort=title_desc" <?php if(isset($_GET['sort']) && $_GET['sort'] == 'title_desc') echo 'selected';?>>Название (Я - А)</option>
+                                <option value="sort=price_asc" <?php if(isset($_GET['sort']) && $_GET['sort'] == 'price_asc') echo 'selected';?>>Цена (низкая &gt; высокая)</option>
+                                <option value="sort=price_desc" <?php if(isset($_GET['sort']) && $_GET['sort'] == 'price_desc') echo 'selected';?>>Цена (высокая &gt; низкая)</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
 
-                <div class="col-sm-6">
-                    <div class="input-group mb-3">
-                        <label class="input-group-text" for="input-sort">Показать:</label>
-                        <select class="form-select" id="input-sort">
-                            <option selected="">15</option>
-                            <option value="1">25</option>
-                            <option value="2">50</option>
-                            <option value="3">75</option>
-                            <option value="3">100</option>
-                        </select>
-                    </div>
-                </div>
+<!--                <div class="col-sm-6">-->
+<!--                    <div class="input-group mb-3">-->
+<!--                        <label class="input-group-text" for="input-sort">Показать:</label>-->
+<!--                        <select class="form-select" id="input-sort">-->
+<!--                            <option selected="">15</option>-->
+<!--                            <option value="1">25</option>-->
+<!--                            <option value="2">50</option>-->
+<!--                            <option value="3">75</option>-->
+<!--                            <option value="3">100</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
 
             <div class="row">

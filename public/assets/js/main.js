@@ -135,4 +135,8 @@ $(function() {
 		window.location = window.location.origin + '/language/change?lang=' + langCode;
 	});
 
+	$('#input-sort').on('change', function () {
+		window.location = window.location.origin + window.location.pathname + '?' + $(this).val();
+	});
+
 });
