@@ -1,27 +1,42 @@
 <?php
-    /** @var $test string */
-    /** @var $slides array */
-    /** @var $products array */
+    /**
+     * @var $test string
+     */
+    /**
+     * @var $slides array
+     */
+    /**
+     * @var $products array
+     */
 ?>
-<?php if(!empty($slides)): ?>
+<?php if (empty($slides) === false) : ?>
 <div class="container-fluid my-carousel">
 
     <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
         <div class="carousel-indicators">
-            <?php for ($i = 0; $i < count($slides); $i++): ?>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?= $i ?>"
-                <?php if ($i == 0): ?>
+            <?php for ($i = 0; $i < count($slides); $i++) : ?>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo $i; ?>"
+                <?php if ($i === 0) : ?>
                     class="active"
                 <?php endif; ?>
-                    aria-current="true" aria-label="Slide <?= $i ?>"></button>
+                    aria-current="true" aria-label="Slide <?php echo $i; ?>"></button>
             <?php endfor; ?>
         </div>
         <div class="carousel-inner">
-            <?php $i = 1; foreach ($slides as $slide): ?>
-                <div class="carousel-item <?php if ($i==1) echo 'active'?>">
-                    <img src="<?= PATH . $slide->img ?>" class="d-block w-100" alt="...">
+            <?php $i = 1; foreach ($slides as $slide) : ?>
+                <div class="carousel-item 
+                <?php
+                if ($i === 1) {
+                    echo 'active';
+                }
+                ?>
+            ">
+                    <img src="<?php echo PATH.$slide->img; ?>" class="d-block w-100" alt="...">
                 </div>
-            <?php $i++; endforeach; ?>
+                <?php
+                $i++;
+            endforeach;
+            ?>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -37,7 +52,7 @@
 </div>
 <?php endif; ?>
 
-<?php if(!empty($products)): ?>
+<?php if (empty($products) === false) : ?>
 <section class="featured-products">
     <div class="container">
         <div class="row">

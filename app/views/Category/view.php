@@ -37,11 +37,19 @@ use core\View;
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="input-sort">Сортировка:</label>
                             <select class="form-select" id="input-sort">
-                                <option >По умолчанию</option>
-                                <option value="sort=title_asc" <?php if(isset($_GET['sort']) && $_GET['sort'] == 'title_asc') echo 'selected';?>>Название (А - Я)</option>
-                                <option value="sort=title_desc" <?php if(isset($_GET['sort']) && $_GET['sort'] == 'title_desc') echo 'selected';?>>Название (Я - А)</option>
-                                <option value="sort=price_asc" <?php if(isset($_GET['sort']) && $_GET['sort'] == 'price_asc') echo 'selected';?>>Цена (низкая &gt; высокая)</option>
-                                <option value="sort=price_desc" <?php if(isset($_GET['sort']) && $_GET['sort'] == 'price_desc') echo 'selected';?>>Цена (высокая &gt; низкая)</option>
+                                <option disabled>По умолчанию</option>
+                                <option value="sort=title_asc" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'title_asc') {
+    echo 'selected';
+}?>>Название (А - Я)</option>
+                                <option value="sort=title_desc" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'title_desc') {
+    echo 'selected';
+}?>>Название (Я - А)</option>
+                                <option value="sort=price_asc" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'price_asc') {
+    echo 'selected';
+}?>>Цена (низкая &gt; высокая)</option>
+                                <option value="sort=price_desc" <?php if (isset($_GET['sort']) && $_GET['sort'] == 'price_desc') {
+    echo 'selected';
+}?>>Цена (высокая &gt; низкая)</option>
                             </select>
                         </div>
                     </div>

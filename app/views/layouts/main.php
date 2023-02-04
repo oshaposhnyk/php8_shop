@@ -1,6 +1,7 @@
 <?php
     use core\View;
-    /** @var $this View */
+
+/** @var $this View */
 ?>
 
 <?php $this->getPart('parts/header'); ?>

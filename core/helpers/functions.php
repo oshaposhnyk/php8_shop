@@ -33,10 +33,10 @@ function baseUrl(): string
 
 /**
  * @param $key - key of $_GET array
- * @param $type Values 'i', 'f', 's'
+ * @param $type string|Values 'i', 'f', 's'
  * @return string|int|float
  */
-function get($key, $type = 'i'): string|int|float
+function get($key, string|Values $type = 'i'): string|int|float
 {
     $param = $key;
     $param = $_GET[$param] ?? '';
@@ -52,10 +52,10 @@ function get($key, $type = 'i'): string|int|float
 
 /**
  * @param $key - key of $_POST array
- * @param $type Values 'i', 'f', 's'
+ * @param $type string|Values 'i', 'f', 's'
  * @return string|int|float
  */
-function post($key, $type = 's'): string|int|float
+function post($key, string|Values $type = 's'): string|int|float
 {
     $param = $key;
     $param = $_POST[$param] ?? '';

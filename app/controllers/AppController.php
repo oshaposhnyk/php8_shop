@@ -10,7 +10,9 @@ use RedBeanPHP\R;
 
 class AppController extends Controller
 {
-
+    /**
+     * @throws \Exception
+     */
     public function __construct($route)
     {
         parent::__construct($route);
@@ -22,15 +24,16 @@ class AppController extends Controller
         $lang = App::$app->getProperty('language');
         \core\Language::load($lang['code'], $this->route);
 
-        $categories = R::getAssoc("
+        $categories = R::getAssoc(
+            "
                 SELECT c.*, cd.*
                 FROM category c
                 JOIN category_description cd
                 ON c.id = cd.category_id
                 WHERE cd.language_id = ?
-                ", [$lang['id']]
+                ",
+            [$lang['id']]
         );
-        App::$app->setProperty("categories_{$lang['code']}", $categories );
-
+        App::$app->setProperty("categories_{$lang['code']}", $categories);
     }
 }

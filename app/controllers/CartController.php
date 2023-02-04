@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Cart;
 use core\App;
+use JetBrains\PhpStorm\NoReturn;
 
 /** @property Cart $model */
 class CartController extends AppController
@@ -14,11 +15,11 @@ class CartController extends AppController
         $id = get('id');
         $qty = get('qty');
 
-        if(!$id) {
+        if (!$id) {
             return false;
         }
         $product = $this->model->getProducts($id, $lang);
-        if(!$product) {
+        if (!$product) {
             return false;
         }
 
@@ -30,10 +31,9 @@ class CartController extends AppController
 
         redirect();
         return true;
-
     }
 
-    public function showAction()
+    #[NoReturn] public function showAction(): void
     {
         $this->loadView('cart_modal');
     }
@@ -53,7 +53,7 @@ class CartController extends AppController
         redirect();
     }
 
-    public function clearAction()
+    public function clearAction(): bool
     {
         if (empty($_SESSION['cart'])) {
             return false;

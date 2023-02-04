@@ -28,7 +28,9 @@ class Breadcrumbs extends AppModel
 
     public static function getParts(array $cats, int $id): array|false
     {
-        if (!$id) return false;
+        if (!$id) {
+            return false;
+        }
         $breadcrumbs = [];
         foreach ($cats as $k => $v) {
             if (isset($cats[$id])) {

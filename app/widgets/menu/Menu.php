@@ -50,7 +50,7 @@ class Menu
             $this->tree = $this->getTree();
             $this->menuHtml = $this->getMenuHtml($this->tree);
 
-            if($this->cache) {
+            if ($this->cache) {
                 $cache->set("{$this->cacheKey}_{$this->lang['code']}", $this->menuHtml, $this->cache);
             }
         }
@@ -64,7 +64,7 @@ class Menu
         $data = $this->data;
 
         foreach ($data as $id=>&$node) {
-            if(!$node['parent_id']) {
+            if (!$node['parent_id']) {
                 $tree[$id] = &$node;
             } else {
                 $data[$node['parent_id']]['children'][$id] = &$node;
@@ -85,7 +85,7 @@ class Menu
     protected function output(): void
     {
         $attrs = '';
-        if(!empty($this->attrs)) {
+        if (!empty($this->attrs)) {
             foreach ($this->attrs as $k => $v) {
                 $attrs .= " $k='$v' ";
             }
@@ -103,6 +103,4 @@ class Menu
         require $this->tpl;
         return ob_get_clean();
     }
-
-
 }

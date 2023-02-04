@@ -107,8 +107,12 @@ class Pagination
 
     public function getCurrentPage($page)
     {
-        if (!$page || $page < 1) $page = 1;
-        if ($page > $this->countPages) $page = $this->countPages;
+        if (!$page || $page < 1) {
+            $page = 1;
+        }
+        if ($page > $this->countPages) {
+            $page = $this->countPages;
+        }
         return $page;
     }
 
@@ -126,11 +130,11 @@ class Pagination
             $uri .= '?';
             $params = explode('&', $url[1]);
             foreach ($params as $param) {
-                if (!preg_match("#page=#", $param)) $uri .= "{$param}&";
+                if (!preg_match("#page=#", $param)) {
+                    $uri .= "{$param}&";
+                }
             }
         }
         return $uri;
     }
-
-
 }

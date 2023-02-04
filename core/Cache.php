@@ -12,7 +12,6 @@ class Cache
         $content['end_time'] = time() + $seconds;
 
         return file_put_contents(CACHE . '/' . md5($key) . '.txt', serialize($content));
-
     }
 
     public function get(string $key): array|bool
@@ -38,6 +37,5 @@ class Cache
         }
 
         return false;
-
     }
 }

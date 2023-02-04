@@ -12,7 +12,8 @@ class Product extends AppModel
             "SELECT p.*, pd.* FROM product p
                 JOIN product_description pd 
                 ON p.id = pd.product_id 
-                WHERE p.status = 1 AND p.slug = ? AND pd.language_id = ? ", [
+                WHERE p.status = 1 AND p.slug = ? AND pd.language_id = ? ",
+            [
                     $slug, $lang['id']
             ]
         );
@@ -21,7 +22,8 @@ class Product extends AppModel
     public function getGallery($productId): array
     {
         return R::getAll(
-            "SELECT * FROM product_gallery WHERE product_id = ?", [
+            "SELECT * FROM product_gallery WHERE product_id = ?",
+            [
                 $productId
             ]
         );
