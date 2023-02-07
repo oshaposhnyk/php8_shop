@@ -139,4 +139,28 @@ $(function() {
 		window.location = window.location.origin + window.location.pathname + '?' + $(this).val();
 	});
 
+	$('.product-card').on('click', '.add-to-wishlist', function (e) {
+		e.preventDefault();
+		const id = $(this).data('id');
+		const $this = $(this);
+
+		$.ajax({
+			url: 'wishlist/add',
+			type: 'GET',
+			data: {
+				id
+			},
+			success: function (res) {
+				res = JSON.parse(res);
+				console.log(res);
+			},
+			error: function (err) {
+				console.log(err);
+			}
+
+		});
+
+
+	});
+
 });
