@@ -152,15 +152,28 @@ $(function() {
 			},
 			success: function (res) {
 				res = JSON.parse(res);
-				console.log(res);
+				Swal.fire(
+					res.text,
+					'',
+					res.result
+				);
+				$this.removeClass('add-to-wishlist').addClass('delete-from-wishlist');
+				$this.find('i').removeClass('fa fa-heart').addClass('fas fa-hand-holding-heart');
 			},
 			error: function (err) {
-				console.log(err);
+				Swal.fire(
+					err.text,
+					'',
+					err.result
+				);
 			}
 
 		});
 
-
 	});
 
-});
+	$('.product-card').on('click', '.delete-from-wishlist', function (e) {
+		e.preventDefault();
+	});
+
+	});

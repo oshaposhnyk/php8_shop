@@ -27,7 +27,6 @@ class Wishlist extends AppModel
                 }
 
                 $wishlist[] = $id;
-                debug($wishlist, 1);
                 $wishlist   = implode(',', $wishlist);
                 setcookie('wishlist', $wishlist, (time() + 3600 * 24 * 7 * 30), '/');
             }
@@ -38,7 +37,7 @@ class Wishlist extends AppModel
 
     public static function getWishlistIds(): array
     {
-        $wishlist = ($_COOKIE['$wishlist'] ?? '');
+        $wishlist = ($_COOKIE['wishlist'] ?? '');
 
         if ($wishlist) {
             $wishlist = explode(',', $wishlist);

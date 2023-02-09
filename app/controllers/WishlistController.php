@@ -17,7 +17,7 @@ class WishlistController extends AppController
         if (!$id) {
             $answer = [
                 'result' => 'error',
-                'test'   => 'Add error',
+                'text'   => 'Add error',
             ];
             exit(json_encode($answer));
         }
@@ -28,12 +28,12 @@ class WishlistController extends AppController
             $this->model->addToWishlist($id);
             $answer = [
                 'result' => 'success',
-                'test'   => 'Add product success',
+                'text'   => 'Add product success',
             ];
         } else {
             $answer = [
                 'result' => 'error',
-                'test'   => 'Add error',
+                'text'   => 'Add error',
             ];
         }
 
