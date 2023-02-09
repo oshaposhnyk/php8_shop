@@ -55,4 +55,44 @@ class Wishlist extends AppModel
     }//end getWishlistIds()
 
 
+    public function getWishlistProducts($lang): array
+    {
+        $wishlist = self::getWishlistIds();
+
+        if ($wishlist) {
+            $wishlist = implode(',', $wishlist);
+            return R::getAll(
+                "SELECT p.*, pd.* FROM product p
+                    JOIN product_description pd on p.id = pd.product_id 
+                    WHERE p.status = 1 AND product_id IN ($wishlist) AND pd.language_id = ?",
+                [$lang['id']]
+            );
+        }
+
+        return [];
+
+    }//end getWishlistProducts()
+
+    public function deleteFromWishlist(int $id): bool
+    {
+        $wishlist = self::getWishlistIds();
+        $key = array_search($id, $wishlist);
+        if (false !== $key) {
+            unset($wishlist[$key]);
+
+            if ($wishlist) {
+                $wishlist = implode(',', $wishlist);
+                setcookie('wishlist', $wishlist, (time() + 3600 * 24 * 7 * 30), '/');
+
+            } else {
+                setcookie('wishlist', '', time() -3600, '/');
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+
 }//end class
