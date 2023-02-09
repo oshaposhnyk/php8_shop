@@ -1,6 +1,8 @@
 <?php
 use core\View;
-/** @var $this View */
+/*
+    @var $this View
+*/
 ?>
 
 
@@ -11,12 +13,21 @@ use core\View;
             <div class="row">
                 <div class="col-md-3 col-6">
                     <h4>Информация</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#">О магазине</a></li>
-                        <li><a href="#">Оплата и доставка</a></li>
-                        <li><a href="#">Контакты</a></li>
-                    </ul>
+<!--                    <ul class="list-unstyled">-->
+<!--                        <li><a href="#">Главная</a></li>-->
+<!--                        <li><a href="#">О магазине</a></li>-->
+<!--                        <li><a href="#">Оплата и доставка</a></li>-->
+<!--                        <li><a href="#">Контакты</a></li>-->
+<!--                    </ul>-->
+    <?php
+    new \app\widgets\page\Page(
+        [
+            'cache'   => 3600,
+            'class'   => 'list-unstyled',
+            'prepend' => '<li><a href="'.baseUrl().'">Homepage</a></li>',
+        ]
+    );
+    ?>
                 </div>
 
                 <div class="col-md-3 col-6">
@@ -54,7 +65,7 @@ use core\View;
     <i class="fas fa-angle-double-up"></i>
 </button>
 
-<?= $this->getDbLogs() ?>
+<?php echo $this->getDbLogs(); ?>
 <div class="modal fade" id="cart-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -70,13 +81,13 @@ use core\View;
 </div>
 
 
-<script src="<?= PATH ?>/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo PATH; ?>/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous"></script>
-<script src="<?= PATH ?>/assets/js/jquery.magnific-popup.min.js"></script>
-<script src="<?= PATH ?>/assets/js/sweetalert2.js"></script>
-<script src="<?= PATH ?>/assets/js/main.js"></script>
+<script src="<?php echo PATH; ?>/assets/js/jquery.magnific-popup.min.js"></script>
+<script src="<?php echo PATH; ?>/assets/js/sweetalert2.js"></script>
+<script src="<?php echo PATH; ?>/assets/js/main.js"></script>
 
 </body>
 </html>
