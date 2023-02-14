@@ -12,7 +12,7 @@ class LanguageController extends AppController
         $lang = get('lang', 's');
 
         if ($lang) {
-            $langs = $this->lang;
+            $langs = App::$app->getProperty('languages');
             if (array_key_exists($lang, $langs)) {
                 $url = trim(str_replace(PATH, '', $_SERVER['HTTP_REFERER']), '/');
                 $urlParts = explode('/', $url, 2);

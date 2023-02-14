@@ -1,4 +1,6 @@
 <?php
+
+use app\widgets\page\Page;
 use core\View;
 
 /*
@@ -13,23 +15,16 @@ use core\View;
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-6">
-                    <h4>Информация</h4>
-    <?php new \app\widgets\page\Page(
-    [
-            'cache'   => 3600,
-            'class'   => 'list-unstyled',
-            'prepend' => '
-                <li><a href="'.baseUrl().'">Homepage</a></li>
-                <li><a href="/page/o-magazine">О магазине</a></li>
-                <li><a href="/page/oplata-i-dostavka">Оплата и доставка</a></li>
-                <li><a href="/page/kontakty">Контакты</a></li>
-            ',
-    ]
-); ?>
+                    <h4><?php l('tpl_information'); ?></h4>
+                    <?php new Page([
+                        'cache' => 0,
+                        'class' => 'list-unstyled',
+                        'prepend' => '<li><a href="' . baseUrl() . '">' . lang('tpl_home_link') . '</a></li>',
+                    ]) ?>
                 </div>
 
                 <div class="col-md-3 col-6">
-                    <h4>Время работы</h4>
+                    <h4><?php l('tpl_work_hours'); ?></h4>
                     <ul class="list-unstyled">
                         <li>г. Киев, ул. Пушкина, 10</li>
                         <li>пн-вс: 9:00 - 18:00</li>
@@ -38,7 +33,7 @@ use core\View;
                 </div>
 
                 <div class="col-md-3 col-6">
-                    <h4>Контакты</h4>
+                    <h4><?php l('tpl_contacts'); ?></h4>
                     <ul class="list-unstyled">
                         <li><a href="tel:5551234567">555 123-45-67</a></li>
                         <li><a href="tel:5551234567">555 123-45-68</a></li>
@@ -47,7 +42,7 @@ use core\View;
                 </div>
 
                 <div class="col-md-3 col-6">
-                    <h4>Мы в сети</h4>
+                    <h4><?php l('tpl_we_online'); ?></h4>
                     <div class="footer-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
