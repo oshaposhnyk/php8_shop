@@ -11,7 +11,7 @@ class CartController extends AppController
 {
     public function addAction(): bool
     {
-        $lang = App::$app->getProperty('language');
+        $lang = $this->lang;
         $id = get('id');
         $qty = get('qty');
 

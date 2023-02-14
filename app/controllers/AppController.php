@@ -11,6 +11,7 @@ use RedBeanPHP\R;
 
 class AppController extends Controller
 {
+    protected array $lang;
     /**
      * @throws \Exception
      */
@@ -37,5 +38,6 @@ class AppController extends Controller
         );
         App::$app->setProperty("categories_{$lang['code']}", $categories);
         App::$app->setProperty('wishlist', Wishlist::getWishlistIds());
+        $this->lang = App::$app->getProperty('language');
     }
 }

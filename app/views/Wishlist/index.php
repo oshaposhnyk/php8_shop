@@ -5,10 +5,6 @@
 /**
  * @var $this View
  */
-/**
- * @var $products array
- */
-
 use core\Pagination;
 use core\View;
 

@@ -12,7 +12,7 @@ class SearchController extends AppController
     public function indexAction()
     {
         $s = get('s', 's');
-        $lang = App::$app->getProperty('language');
+        $lang = $this->lang;
         $page = get('page');
         $perPage = App::$app->getProperty('pagination');
 

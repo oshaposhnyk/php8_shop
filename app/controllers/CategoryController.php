@@ -6,14 +6,13 @@ use app\models\Breadcrumbs;
 use app\models\Category;
 use core\App;
 use core\Pagination;
-use RedBeanPHP\R;
 
 /** @property Category $model */
 class CategoryController extends AppController
 {
     public function viewAction()
     {
-        $lang = App::$app->getProperty('language');
+        $lang = $this->lang;
         $category = $this->model->getCategory($this->route['slug'], $lang);
 
         if (!$category) {

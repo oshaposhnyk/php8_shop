@@ -14,7 +14,7 @@ class WishlistController extends AppController
 
     public function indexAction()
     {
-        $lang     = App::$app->getProperty('language');
+        $lang     = $this->lang;
         $products = $this->model->getWishlistProducts($lang);
         $this->setMeta('Wishlist');
         $this->set(['products' => $products]);

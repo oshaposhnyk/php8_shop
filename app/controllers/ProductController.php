@@ -11,7 +11,7 @@ class ProductController extends AppController
     /** @property Product $model */
     public function viewAction()
     {
-        $lang = App::$app->getProperty('language');
+        $lang = $this->lang;
 
         $product = $this->model->getProduct($lang, $this->route['slug']);
 
